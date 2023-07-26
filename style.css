@@ -103,28 +103,19 @@ body{
     text-transform: capitalize;
 }
 
-.weather-details{
+.weather-details {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50% 50%;
     margin-top: 30px;
 }
 
-.weather-details .humidity, .weather-details .wind{
+.weather-details .humidity, .weather-details .wind, .weather-details .pressure {
     display: flex;
     align-items: center;
-    width: 50%;
+    justify-content: center;
+    width: 100%;
     height: 100px;
-}
-
-.weather-details .humidity{
-    padding-left: 20px;
-    justify-content: flex-start;
-}
-
-.weather-details .wind{
-    padding-right: 20px;
-    justify-content: flex-end;
 }
 
 .weather-details i{
