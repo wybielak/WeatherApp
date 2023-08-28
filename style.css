@@ -110,12 +110,33 @@ body{
     margin-top: 30px;
 }
 
-.weather-details .humidity, .weather-details .wind, .weather-details .pressure {
+.weather-details .humidity, .weather-details .wind, .weather-details .pressure, .weather-details .forecast {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100px;
+}
+
+.weather-details .forecast {
+    flex-direction: column;
+}
+
+.weather-details .forecast button {
+    margin: 0;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: #06283D;
+    background: #dff6ff;
+    border-radius: 50%;
+    font-size: 22px;
+    transition: 0.4s ease;
+}
+
+.weather-details .forecast button:hover{
+    color: #fff;
+    background: #06283D;
 }
 
 .weather-details i{
@@ -157,9 +178,36 @@ body{
     margin-top: 12px;
 }
 
-.weather-box, .weather-details{
+.weather-box, .weather-details, .weather-forecast{
     scale: 0;
     opacity: 0;
+}
+
+.weather-forecast {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather-forecast .forecast-row {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 15% 25%;
+    align-items: center;
+    justify-items: center;
+
+    border-top: 2px solid #06283D;
+}
+
+.weather-forecast img {
+    width: 60%;
+    align-self: flex-start;
+}
+
+.weather-forecast .forecast-row .min-temp{
+    font-size: 0.8rem;
+    color: #06283dcb;
 }
 
 .fadeIn{
@@ -171,5 +219,17 @@ body{
     to {
         scale: 1;
         opacity: 1;
+    }
+}
+
+.rotatenclick{
+    animation: 0.5s rotatenclick forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes rotatenclick{
+    
+    to {
+        transform: rotate(360deg);
     }
 }
