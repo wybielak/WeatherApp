@@ -110,7 +110,7 @@ body{
     margin-top: 30px;
 }
 
-.weather-details .humidity, .weather-details .wind, .weather-details .pressure, .weather-details .forecast {
+.weather-details .humidity, .weather-details .wind, .weather-details .more-details, .weather-details .forecast {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,23 +118,24 @@ body{
     height: 100px;
 }
 
-.weather-details .forecast {
+.weather-details .forecast, .weather-details .more-details {
     flex-direction: column;
 }
 
-.weather-details .forecast button {
+.weather-details .forecast button,  .weather-details .more-details button{
     margin: 0;
+    margin-bottom: 5px;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 130px;
+    height: 70px;
     color: #06283D;
     background: #dff6ff;
-    border-radius: 50%;
+    border-radius: 10px;
     font-size: 22px;
     transition: 0.4s ease;
 }
 
-.weather-details .forecast button:hover{
+.weather-details .forecast button:hover, .weather-details .more-details button:hover{
     color: #fff;
     background: #06283D;
 }
@@ -184,7 +185,7 @@ body{
 }
 
 .weather-forecast {
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,9 +206,30 @@ body{
     align-self: flex-start;
 }
 
-.weather-forecast .forecast-row .min-temp{
-    font-size: 0.8rem;
-    color: #06283dcb;
+.weather-forecast .switch-day {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: center;
+
+    font-size: 1.2rem;
+}
+
+.weather-forecast .switch-day button {
+    margin: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: #06283D;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 22px;
+    transition: 0.4s ease;
+}
+
+.weather-forecast .switch-day button:hover{
+    transform: scale(1.2);
 }
 
 .fadeIn{
@@ -222,14 +244,22 @@ body{
     }
 }
 
-.rotatenclick{
-    animation: 0.5s rotatenclick forwards;
-    animation-delay: 0.1s;
+.clickn{
+    animation: 0.5s clickn forwards;
+    animation-delay: 0s;
 }
 
-@keyframes rotatenclick{
+@keyframes clickn{
     
-    to {
-        transform: rotate(360deg);
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }

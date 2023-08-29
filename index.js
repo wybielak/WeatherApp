@@ -26,15 +26,13 @@ search.addEventListener('click', () => {
                 weatherBox.style.display = 'none';
                 weatherDetails.style.display = 'none';
                 weatherForecast.style.display = 'none';
-                container.style.overflow = 'hidden';
                 error404.style.display = 'block';
                 error404.classList.add('fadeIn');
                 return;
             }
 
             weatherForecast.style.display = 'none';
-            container.style.overflow = 'hidden';
-            forecastbtn.classList.remove('rotatenclick');
+            forecastbtn.classList.remove('clickn');
             error404.style.display = 'none';
             error404.classList.remove('fadeIn');
 
@@ -44,7 +42,7 @@ search.addEventListener('click', () => {
             const description = document.querySelector('.weather-box .description');
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
-            const pressure = document.querySelector('.weather-details .pressure span');
+            //const pressure = document.querySelector('.weather-details .pressure span');
 
             switch (json.weather[0].main) {
                 case 'Clear':
@@ -75,7 +73,7 @@ search.addEventListener('click', () => {
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`
             wind.innerHTML = `${parseFloat(Math.round(json.wind.speed) * (1 / 1000) / (1 / 3600))}km/h`;
-            pressure.innerHTML = `${parseInt(json.main.pressure)}hPa`;
+            //pressure.innerHTML = `${parseInt(json.main.pressure)}hPa`;
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
@@ -87,6 +85,96 @@ search.addEventListener('click', () => {
 
 });
 
+var dayindex = 0;
+var jsonglobal = {};
+
+var i = 0;
+var j = 0;
+
+var steps = 0;
+
+function refresh (dayindex, json) {
+    
+    const weekdays = [
+        'Sunday', 'Monday', 'Tuesday', 'Wenesday', 'Thursday', 'Friday', 'Saturday'
+    ];
+
+    get_date = json.list[i].dt;
+    date = new Date(get_date * 1000);
+    
+    dayindex = date.getDay();
+    daynumber = dayindex;
+
+    weatherForecast.innerHTML = `
+        <div class="switch-day">
+            <button onclick="previousday()" class="fa-solid fa-chevron-left"></button>
+            <p><b>${weekdays[dayindex]}</b></p>
+            <button onclick="nextday()" class="fa-solid fa-chevron-right"></button>
+        </div>
+    `;
+
+    j = 0;
+
+    while (dayindex == daynumber & i < 40) {
+
+        get_date = json.list[i].dt;
+        date = new Date(get_date * 1000);
+
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        daynumber = date.getDay();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+
+        if (dayindex == daynumber) {
+
+            time = `<b>${day}.${month}</b><br>${hours}:${minutes}`;
+            temperature = `${parseInt(json.list[i].main.temp - 273.15)}°C`;
+            humidity = `${parseInt(json.list[i].main.humidity)}%`;
+            wind = `${parseFloat(Math.round(json.list[i].wind.speed) * (1 / 1000) / (1 / 3600))}km/h`;
+
+            img = '';
+
+            switch (json.list[i].weather[0].main) {
+                case 'Clear':
+                    img = 'img/clear.png';
+                    break;
+
+                case 'Rain':
+                    img = 'img/rain.png';
+                    break;
+
+                case 'Snow':
+                    img = 'img/snow.png';
+                    break;
+
+                case 'Clouds':
+                    img = 'img/cloud.png';
+                    break;
+
+                case 'Haze':
+                    img = 'img/mist.png';
+                    break;
+
+                default:
+                    img = '';
+            }
+
+            weatherForecast.innerHTML += `
+                <div class="forecast-row">
+                    <p class="time" >${time}</p>
+                    <img src="${img}">
+                    <p class="temp" >${temperature}</p>
+                    <p class="humidity" >${humidity}</p>
+                    <p class="wind" >${wind}</p>
+                </div>
+            `;
+            i++;
+            j++;
+        }
+    }
+}
+
 forecastbtn.addEventListener('click', () => {
 
     const APIkey = '78448c0080cb7511f61c4371c831a80b';
@@ -97,73 +185,40 @@ forecastbtn.addEventListener('click', () => {
 
             console.log(json);
 
+            jsonglobal = json;
 
-            for (i = 0; i < json.list.length; i++) {
-                
-                get_date = json.list[i].dt;
-                date = new Date(get_date * 1000);
+            i = 0;
 
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
+            refresh(dayindex, json);
 
-                time = `<b>${day}.${month}</b><br>${hours}:${minutes}`;
-                temperature = `${parseInt(json.list[i].main.temp - 273.15)}°C`;
-                min_temp = `${parseInt(json.list[i].main.temp_max - 273.15)}°C<br>${parseInt(json.list[0].main.temp_min - 273.15)}°C`;
-                wind = `${parseFloat(Math.round(json.list[i].wind.speed) * (1 / 1000) / (1 / 3600))}km/h`;
-
-                img = '';
-
-                switch (json.list[i].weather[0].main) {
-                    case 'Clear':
-                        img = 'img/clear.png';
-                        break;
-
-                    case 'Rain':
-                        img = 'img/rain.png';
-                        break;
-
-                    case 'Snow':
-                        img = 'img/snow.png';
-                        break;
-
-                    case 'Clouds':
-                        img = 'img/cloud.png';
-                        break;
-
-                    case 'Haze':
-                        img = 'img/mist.png';
-                        break;
-
-                    default:
-                        img = '';
-                }
-
-                weatherForecast.innerHTML += `
-                <div class="forecast-row">
-                    <p class="time" >${time}</p>
-                    <img src="${img}">
-                    <p class="temp" >${temperature}</p>
-                    <p class="min-temp" >${min_temp}</p>
-                    <p class="wind" >${wind}</p>
-                </div>
-            `;
-            }
-
-            forecastbtn.classList.add('rotatenclick');
+            forecastbtn.classList.add('clickn');
 
             setTimeout(function () {
-                container.style.overflow = 'scroll';
                 container.style.height = '690px';
                 weatherBox.style.display = 'none';
                 weatherDetails.style.display = 'none';
                 weatherForecast.style.display = '';
                 weatherForecast.classList.add('fadeIn');
-            }, 700);
-
-
+            }, 500);
         });
-
-
 });
+
+function previousday () { 
+    
+    if (steps > 0) {
+        dayindex -= 1;
+        steps -= 1;
+        i -= j*2;
+        refresh(dayindex, jsonglobal);
+    } 
+}
+
+function nextday () { 
+    
+    if (steps < 4) {
+        dayindex += 1;
+        steps += 1;
+        refresh(dayindex, jsonglobal);
+    }
+
+}
