@@ -296,6 +296,15 @@ detailsbtn.addEventListener('click', () => {
 
                     const air_pollution = document.querySelector('.details .air-pollution');
 
+                    air_pollution.innerHTML = `
+                        <p>SO<sub>2</sub></p>
+                        <p>NO<sub>2</sub></p>
+                        <p>PM<sub>10</sub></p>
+                        <p>PM<sub>2.5</sub></p>
+                        <p>O<sub>3</sub></p>
+                        <p>CO</p>
+                    `;
+
                     air_pollution.innerHTML += `
                         <p class="so2" >${so2}</p>
                         <p class="no2" >${no2}</p>
