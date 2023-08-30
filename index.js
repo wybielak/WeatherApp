@@ -283,7 +283,7 @@ detailsbtn.addEventListener('click', () => {
             lon.innerHTML = `${json.coord.lon}`;
             lat.innerHTML = `${json.coord.lat}`;
 
-            fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${APIkey}`)
+            fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${APIkey}`)
                 .then(response => response.json()).then(jsonair => {
                     console.log(jsonair)
 
