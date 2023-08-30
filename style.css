@@ -179,12 +179,12 @@ body{
     margin-top: 12px;
 }
 
-.weather-box, .weather-details, .weather-forecast{
+.weather-box, .weather-details, .weather-forecast, .details{
     scale: 0;
     opacity: 0;
 }
 
-.weather-forecast {
+.weather-forecast, .details {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -230,6 +230,54 @@ body{
 
 .weather-forecast .switch-day button:hover{
     transform: scale(1.2);
+}
+
+.details .text {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: left;
+    row-gap: 5px;
+}
+
+.details .text p {
+    padding: 5px;
+    border-left: 2px solid #06283D;
+}
+
+.details .text p span {
+    font-weight: 600;
+}
+
+.details .desc {
+    text-transform: capitalize;
+}
+
+.wide-row {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.details .air-pollution {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    justify-items: center;
+}
+
+.air-pollution p {
+    font-weight: 600;
+}
+
+.air-title {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.air-title span {
+    font-weight: 900;
+    font-size: 1.1rem;
 }
 
 .fadeIn{
