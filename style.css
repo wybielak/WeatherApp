@@ -280,6 +280,22 @@ body{
     font-size: 1.1rem;
 }
 
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 70%;
+    font-weight: 100;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .fadeIn{
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;

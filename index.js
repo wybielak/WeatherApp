@@ -18,7 +18,7 @@ search.addEventListener('click', () => {
         return;
     }
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}&lang=pl`)
         .then(response => response.json()).then(json => {
 
             console.log(json);
@@ -101,7 +101,7 @@ var steps = 0;
 function refresh(dayindex, json) {
 
     const weekdays = [
-        'Sunday', 'Monday', 'Tuesday', 'Wenesday', 'Thursday', 'Friday', 'Saturday'
+        'Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'
     ];
 
     get_date = json.list[i].dt;
@@ -185,7 +185,7 @@ forecastbtn.addEventListener('click', () => {
     const APIkey = '78448c0080cb7511f61c4371c831a80b';
     const city = document.querySelector('.search-box input').value;
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIkey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIkey}&lang=pl`)
         .then(response => response.json()).then(json => {
 
             forecastbtn.classList.add('clickn');
@@ -234,7 +234,7 @@ detailsbtn.addEventListener('click', () => {
     const APIkey = '78448c0080cb7511f61c4371c831a80b';
     const city = document.querySelector('.search-box input').value;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIkey}&lang=pl`)
         .then(response => response.json()).then(json => {
 
             detailsbtn.classList.add('clickn');
@@ -283,7 +283,7 @@ detailsbtn.addEventListener('click', () => {
             lon.innerHTML = `${json.coord.lon}`;
             lat.innerHTML = `${json.coord.lat}`;
 
-            fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${APIkey}`)
+            fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${APIkey}&lang=pl`)
                 .then(response => response.json()).then(jsonair => {
                     console.log(jsonair)
 

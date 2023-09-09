@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 
-    <html lang="en">
+    <html lang="pl">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="a jaka pogoda, pogoda, aktualna pogoda, prognoza, prognoza pogody, pogoda dla śląska, pogoda dla slaska, jakość powietrza, jakosc powietrza, temperatura, lokalna pogoda, szczegółowe dane pogodowe, szczegolowe dane pogodowe, aplikacja pogodowa">
+        <meta name="description" content="Bądź na bieżąco z lokalną pogodą i zaplanuj swój dzień z naszą aplikacją. Nasza aplikacja pogodowa umożliwia sprawdzenie prognozy pogody na 4 dni, dostarcza szczegółowe informacje o aktualnych warunkach atmosferycznych oraz poziomie jakości powietrza." />
 
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" >
 
-        <title>Weather App</title>
+        <title>Aktualna pogoda i jakość powietrza - prognoza, szczegółowe informacje podane jak na  tacy</title>
     </head>
 
     <body>
         <div class="container">
             <div class="search-box">
                 <i class="fa-solid fa-location-dot"></i>
-                <input type="text" placeholder="Enter your location">
+                <input type="text" placeholder="Gdzie jesteś?">
                 <button class="fa-solid fa-magnifying-glass" ></button>
             </div>
 
             <div class="not-found">
                 <img src="img/404.png">
-                <p>Oops! Invalid location :/</p>
+                <p>Oops! Nie nam takiego miejsca :/</p>
             </div>
 
             <div class="weather-box">
@@ -38,7 +41,7 @@
                     <i class="fa-solid fa-water"></i>
                     <div class="text">
                         <span></span>
-                        <p>Humidity</p>
+                        <p>Wilgotność</p>
                     </div>
                 </div>
 
@@ -46,21 +49,21 @@
                     <i class="fa-solid fa-wind"></i>
                     <div class="text">
                         <span></span>
-                        <p>Wind Speed</p>
+                        <p>Prędkość wiatru</p>
                     </div>
                 </div>
 
                 <div class="more-details">
                     <button class="fa-solid fa-info"></button>
                     <div class="text">
-                        <p><b>Details</b></p>
+                        <p><b>Szczegóły</b></p>
                     </div>
                 </div>
 
                 <div class="forecast">
                     <button class="fa-regular fa-calendar-days"></button>
                     <div class="text">
-                        <p><b>Forecast</b></p>
+                        <p><b>Prognoza</b></p>
                     </div>
                 </div>
 
@@ -69,18 +72,18 @@
             <div class="details">
                 <div class="text">
                     <p class="desc" ><span></span></p>
-                    <p class="clouds" >Cloudiness <span></span>%</p>
-                    <p class="temp" >Temperature <span></span>°C</p>
-                    <p class="feel" >Feels like <span></span>°C</p>
-                    <p class="humidity" >Humidity <span></span>%</p>
-                    <p class="pressure" >Pressure <span></span>hPa</p>
-                    <p class="sunrise" >Sunrise <span></span></p>
-                    <p class="sunset" >Sunset <span></span></p>
-                    <p class="visibility" >Visibility <span></span>km</p>
-                    <p class="wind" >Wind speed <span></span>km/h</p>
-                    <p class="wide-row">Coords</p>
-                    <p class="lon" >Lon <span></span></p>
-                    <p class="lat" >Lat <span></span></p>
+                    <p class="clouds" >Zachmurzenie <span></span>%</p>
+                    <p class="temp" >Temperatura <span></span>°C</p>
+                    <p class="feel" >Odczuwalna <span></span>°C</p>
+                    <p class="humidity" >Wilgotność <span></span>%</p>
+                    <p class="pressure" >Ciśnienie <span></span>hPa</p>
+                    <p class="sunrise" >Wschód słońca <span></span></p>
+                    <p class="sunset" >Zachód słońca <span></span></p>
+                    <p class="visibility" >Widoczność <span></span>km</p>
+                    <p class="wind" >Prędkość wiatru <span></span>km/h</p>
+                    <p class="wide-row">Współrzędne</p>
+                    <p class="lon" >Lon (dł. geo.) <span></span></p>
+                    <p class="lat" >Lat (szer. geo.) <span></span></p>
                 </div>
 
                 <p class="air-title" >
@@ -113,6 +116,8 @@
             </div>
 
         </div>
+
+        <div class="footer">Created by DNw<br>Powered by <a target="_blank" href="https://openweathermap.org/">© 2012 — 2023 OpenWeather ®</a></div>
 
         <script src="https://kit.fontawesome.com/2981326418.js" crossorigin="anonymous"></script>
         <script src="index.js" ></script>
