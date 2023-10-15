@@ -280,6 +280,10 @@ body{
     font-size: 1.1rem;
 }
 
+.air-legend {
+    margin: 15px 0 0 0;
+}
+
 .footer {
     position: absolute;
     bottom: 10px;
